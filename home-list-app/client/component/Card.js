@@ -3,7 +3,7 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 
 
-const Card = props => {
+const Card = (props) => {
 
     const navigation = useNavigation();
 
@@ -13,18 +13,18 @@ const Card = props => {
         >
             <View style={styles.card}>
                 <View style={styles.titleContainer}>
-                    <Text style={styles.title}>Modern 3-bedroom flat</Text>
+                    <Text style={styles.title}>{props.title}</Text>
                 </View>
                 <View style={styles.imageContainer}>
-                    <ImageBackground source={require('../assets/images/house.png')} style={styles.image}>
-                        <Text style={styles.price}>$200,000</Text>
+                    <ImageBackground source={{ uri: props.image }} style={styles.image}>
+                        <Text style={styles.price}>{ props.price }</Text>
                         <View style={styles.year}>
-                            <Text style={styles.yearText}>2020</Text>
+                            <Text style={styles.yearText}>{ props.yearBuilt }</Text>
                         </View>
                     </ImageBackground>
                 </View>
                 <View style={styles.description}>
-                    <Text style={styles.descriptionText}>This is the description</Text>
+                    <Text style={styles.descriptionText}>{props.description}</Text>
                 </View>
             </View>
         </TouchableOpacity>
