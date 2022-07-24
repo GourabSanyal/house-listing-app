@@ -16,7 +16,7 @@ const HomeListScreen = ({ navigation, props }) => {
 
   console.log(houses)
   // console.log("Done")
-  
+
   useEffect(() =>{
     dispatch(houseAction.fetchHouses())
   }, [dispatch])
@@ -26,7 +26,7 @@ const HomeListScreen = ({ navigation, props }) => {
       <FlatList
         data={houses}
         keyExtractor={(item) => item._id}
-        renderItem={( item ) =>{
+        renderItem={({ item }) =>(
           <Card 
             navigation={navigation}
             title={item.title}
@@ -37,7 +37,7 @@ const HomeListScreen = ({ navigation, props }) => {
             image={item.image}
             yearBuiilt={item.yearBuiilt}
           />
-        }}
+  )}
       />
       <FloatingAction 
         position="right"
