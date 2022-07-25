@@ -7,7 +7,7 @@ import store from './redux/store';
 
 export default function App() {
   return (
-    <Provider store={store}>
+    <Provider store={store} >
       <AppNavigator />
     </Provider>
     // <Text style={styles.container}>Hey</Text>

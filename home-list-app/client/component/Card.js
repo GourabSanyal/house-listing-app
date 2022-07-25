@@ -5,15 +5,17 @@ import { useNavigation } from '@react-navigation/native';
 
 const Card = (props) => {
 
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
 
     return(
         <TouchableOpacity
-            onPress={() => {props.navigation.navigate('HomeDetails')}}
+            onPress={() => {props.navigation.navigate('HomeDetails' , {
+              houseId : props.id
+            })}}
         >
             <View style={styles.card}>
                 <View style={styles.titleContainer}>
-                    <Text style={styles.title}>{props.title}</Text>
+                    <Text style={styles.title}>{props.title ? (props.title.length > 30 ? props.title.slice(0, 30) + '...' : props.title): true}</Text>
                 </View>
                 <View style={styles.imageContainer}>
                     <ImageBackground source={{ uri: props.image }} style={styles.image}>
@@ -24,7 +26,7 @@ const Card = (props) => {
                     </ImageBackground>
                 </View>
                 <View style={styles.description}>
-                    <Text style={styles.descriptionText}>{props.description}</Text>
+                    <Text style={styles.descriptionText}>{props.description ? (props.description.length > 100 ? props.description.slice(0, 100) + '...' : props.description) : true}</Text>
                 </View>
             </View>
         </TouchableOpacity>

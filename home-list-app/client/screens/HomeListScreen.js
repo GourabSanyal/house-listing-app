@@ -14,7 +14,7 @@ const HomeListScreen = ({ navigation, props }) => {
 
   const {houses} = useSelector((state) => state.house);
 
-  console.log(houses)
+  // console.log(houses)
   // console.log("Done")
 
   useEffect(() =>{
@@ -36,6 +36,7 @@ const HomeListScreen = ({ navigation, props }) => {
             price={item.price}
             image={item.image}
             yearBuiilt={item.yearBuiilt}
+            id={item._id}
           />
   )}
       />
