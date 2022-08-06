@@ -45,7 +45,7 @@ const AddHomeScreen = ({navigation}) => {
                         })
                 }}
             >
-                {( props)=>{
+                {(props)=>{
                     return(
                         <View style={styles.form}>
                     <View style={styles.formGroup}>
@@ -87,7 +87,7 @@ const AddHomeScreen = ({navigation}) => {
                             keyboardType={'numeric'}
                             onBlur={props.handleBlur('price')}
                         />
-                         <Text styles={styles.error}>{props.touched.homeType && props.errors.homeType}</Text>
+                         <Text styles={styles.error}>{props.touched.price && props.errors.price}</Text>
                     </View>
                     <View style={styles.formGroup}>
                         <Text style={styles.label}>Year Built</Text>

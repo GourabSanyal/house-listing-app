@@ -15,11 +15,11 @@ export default function(state = intialState, action){
                 houses: action.payload
             }
             case CREATE_HOUSES:
-                console.log(action.payload)
-                return{
-                    ...state,
-                    houses: houses.concat(action.payload)
-                }
+                // console.log(action.payload)
+                // return{
+                //     ...state,
+                //     houses: houses.concat(action.payload)
+                // }
     }
     // otherwise return the existing state unchanged
     return state;

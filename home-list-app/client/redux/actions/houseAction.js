@@ -24,7 +24,7 @@ export const createHome = ({ title, image, homeType, price, yearBuilt, address, 
         const response = (await fetch('http://192.168.29.13:3000/api/houses'), {
             method: 'POST',
             headers:{
-                'Content-Type' : 'applucation/json'
+                'Content-Type' : 'application/json'
             },
             body: JSON.stringify({
                 title,
