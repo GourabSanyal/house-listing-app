@@ -35,7 +35,7 @@ const AddHomeScreen = ({navigation}) => {
                 }}
                 validationSchema={formSchema}
                 onSubmit={(values) => {
-                    console.log(values)
+                    // console.log(values)
                     dispatch(houseAction.createHome(values))
                         .then(() => {
                         Alert.alert("Created Successfully", [{ text: 'OK'}])

@@ -36,7 +36,7 @@ const validate = [
         title: req.body.title,
         address: req.body.address,
         homeType: req.body.homeType,
-        description: req.bodydescription,
+        description: req.body.description,
         price: req.body.price,
         image: req.body.image,
         yearBuilt: req.body.yearBuilt
@@ -62,7 +62,7 @@ const validate = [
         .catch(err => console.log(err))
     })
     
-// /api/houses/:id
+// /api/houses/id
 router.get('/:id', ( req, res ) =>{
     const houseId = req.params.id;
     
@@ -73,7 +73,7 @@ router.get('/:id', ( req, res ) =>{
     .catch(err => console.group(err))
 })
     
-// /api/houses/:id
+// /api/houses/id
 router.put('/:id', validate, ( req, res ) =>{
     const houseId = req.params.id;
 
@@ -101,7 +101,7 @@ router.put('/:id', validate, ( req, res ) =>{
         .catch(err => console.log(err))
 }) 
 
-// /api/houses/:id
+// /api/houses/id
 router.delete('/:id', validate, ( req, res) =>{
     const houseId = req.body.id;
 
