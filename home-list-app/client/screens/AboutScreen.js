@@ -11,4 +11,12 @@ const AboutScreen = () => {
 
 export default AboutScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+
+  container:{
+    flex:1
+  },
+  floatingButton:{
+    marginTop: '80px'
+  }
+})

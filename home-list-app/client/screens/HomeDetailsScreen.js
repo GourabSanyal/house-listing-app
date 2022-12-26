@@ -11,39 +11,44 @@ const HomeDetailsScreen = (props) => {
   console.log(house)
 
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.heading}>
-          <Text style={styles.title}>{house.title}</Text>
+    <View>
+            <Text>
+               Home details Screen
+            </Text>
         </View>
-        <View>
-          <Image
-            source={{ uri: house.image}}
-            style={styles.image}
-          />
-        </View>
-        <View style={styles.group}>
-          <Text style={styles.label}>Home Type: </Text>
-          <Text style={styles.value}>{house.homeType}</Text>
-        </View>
-        <View style={styles.group}>
-          <Text style={styles.label}>Price: </Text>
-          <Text style={styles.value}>{house.price}</Text>
-        </View>
-        <View style={styles.group}>
-          <Text style={styles.label}>Year Build</Text>
-          <Text style={styles.value}>{house.yearBuilt}</Text>
-        </View>
-        <View style={styles.group}>
-          <Text style={styles.label}>Address</Text>
-          <Text style={styles.value}>{house.address}</Text>
-        </View>
-        <View style={styles.group}>
-          <Text style={styles.label}>Description</Text>
-          <Text style={styles.value}>{house.description}</Text>
-        </View>
-      </View>
-    </ScrollView>
+    // <ScrollView>
+    //   <View style={styles.container}>
+    //     <View style={styles.heading}>
+    //       <Text style={styles.title}>{house.title}</Text>
+    //     </View>
+    //     <View>
+    //       <Image
+    //         source={{ uri: house.image}}
+    //         style={styles.image}
+    //       />
+    //     </View>
+    //     <View style={styles.group}>
+    //       <Text style={styles.label}>Home Type: </Text>
+    //       <Text style={styles.value}>{house.homeType}</Text>
+    //     </View>
+    //     <View style={styles.group}>
+    //       <Text style={styles.label}>Price: </Text>
+    //       <Text style={styles.value}>{house.price}</Text>
+    //     </View>
+    //     <View style={styles.group}>
+    //       <Text style={styles.label}>Year Build</Text>
+    //       <Text style={styles.value}>{house.yearBuilt}</Text>
+    //     </View>
+    //     <View style={styles.group}>
+    //       <Text style={styles.label}>Address</Text>
+    //       <Text style={styles.value}>{house.address}</Text>
+    //     </View>
+    //     <View style={styles.group}>
+    //       <Text style={styles.label}>Description</Text>
+    //       <Text style={styles.value}>{house.description}</Text>
+    //     </View>
+    //   </View>
+    // </ScrollView>
   )
 }
 
