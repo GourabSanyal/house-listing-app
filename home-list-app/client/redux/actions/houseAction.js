@@ -1,22 +1,22 @@
-// export const FETCH_HOUSES = 'FETCH_HOUSES';
-// export const CREATE_HOUSES = 'CREATE_HOUSES';
+export const FETCH_HOUSES = 'FETCH_HOUSES';
+export const CREATE_HOUSES = 'CREATE_HOUSES';
 
-// export const fetchHouses = () =>{
-//     return async dispatch =>{
+export const fetchHouses = () =>{
+    return async dispatch => {
 
-// // logic to fecth api or houses data
-//         const result = await (await fetch('http://192.168.29.13:3000/api/houses')).json();
+// logic to fecth api or houses data
+        const result = await fetch('http://192.168.56.1:3000/api/houses');
 
-//         // const resultData = await result.json();
+        const resData = await result.json();
 
-//         // console.log(result);
+        console.log(resData);
 
-//         dispatch({
-//             type: FETCH_HOUSES,
-//             payload: result
-//         })
-//     }
-// }
+        dispatch({
+            type: FETCH_HOUSES,
+            payload: resData
+        })
+    }
+}
 
 // export const createHome = ({ title, image, homeType, price, yearBuilt, address, description}) =>{
     

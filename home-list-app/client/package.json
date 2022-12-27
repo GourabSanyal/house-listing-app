@@ -4,10 +4,10 @@
   "scripts": {
     "start": "expo start --dev-client",
     "android": "expo run:android",
-    "androidUsbDebug": "expo start --localhost --android",
     "ios": "expo run:ios",
     "web": "expo start --web",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "androidUsbDebug": "expo start --localhost --android"
   },
   "dependencies": {
     "@react-navigation/bottom-tabs": "^6.3.1",
