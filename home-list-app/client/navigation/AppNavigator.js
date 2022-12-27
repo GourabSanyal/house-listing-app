@@ -75,7 +75,7 @@ function AppsNavigator() {
                 <Tab.Screen 
                     name="Home" 
                     component={StackNavigator} 
-                />
+                /> 
                 <Tab.Screen 
                     name = "About" 
                     component = {AboutStackNavigator}/>
@@ -107,7 +107,7 @@ function AppsNavigator() {
 //                         } else if (iconName == "About"){
 //                             iconName = "info"
 //                         }
-//                         return (<MaterialIcons
+//                         return (<`MaterialIcons`
 //                             name = {iconName}
 //                             size = {24}
 //                         />)

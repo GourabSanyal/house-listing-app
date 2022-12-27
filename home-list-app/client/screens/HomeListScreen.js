@@ -5,7 +5,7 @@ import React, {useEffect} from 'react'
 
 //components
 import Card from '../component/Card';
-// import { FloatingAction } from "react-native-floating-action";
+import { FloatingAction } from "react-native-floating-action";
 // import * as houseAction from '../redux/actions/houseAction.js';
 
 const HomeListScreen = ({ navigation, props }) => {
@@ -22,18 +22,24 @@ const HomeListScreen = ({ navigation, props }) => {
   // }, [dispatch])
 
   return (
-    <View>
-      <Text>
-          Add Home Screen
-      </Text>
+    <View style={styles.container}>
+      <Card 
+        navigation={navigation}
+      />
+      <FloatingAction
+        position="right"
+        onPressMain={() =>{navigation.navigate('AddHome')}}
+        // animated={false}
+        showBackground={false}
+      />
     </View>
-    //   <View style={styles.container}>
+    //   <View >
   //     <FlatList
   //       data={houses}
   //       keyExtractor={(item) => item._id}
   //       renderItem={({ item }) =>(
   //         <Card 
-  //           navigation={navigation}
+  //           
   //           title={item.title}
   //           address={item.address}
   //           hometype={item.homeType}
@@ -47,9 +53,8 @@ const HomeListScreen = ({ navigation, props }) => {
   //     />
   //     <FloatingAction 
   //       position="right"
-  //       animated={false}
-  //       showBackground={false}
-  //       onPressMain={() =>{navigation.navigate('AddHome')}}
+  //       
+  //      
   //       style={styles.floatingButton}
   //     />
   //   </View>
