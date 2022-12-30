@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
 
 const houses = require('./routes/houses');
 
 const app = express();
+app.use(cors())
 
 app.use(express.json());
 
@@ -17,7 +19,7 @@ require('dotenv').config();
 
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect('mongodb+srv://admin:admin@cluster0.0nzgdwi.mongodb.net/house_app?retryWrites=true&w=majority')
+mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@cluster0.0nzgdwi.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`)
     .then(result => {
             app.listen(PORT, ()=>
                 console.log(`Server is running on port ${PORT}`))
