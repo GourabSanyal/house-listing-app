@@ -5,11 +5,11 @@ export const fetchHouses = () =>{
     return async dispatch => {
 
 // logic to fecth api or houses data
-        const result = await fetch('http://192.168.56.1:3000/api/houses');
+        const result = await fetch('https://house-app.onrender.com/api/houses');
 
         const resData = await result.json();
 
-        console.log(resData);
+        // console.log(resData);
 
         dispatch({
             type: FETCH_HOUSES,

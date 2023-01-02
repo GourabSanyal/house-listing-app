@@ -12,9 +12,10 @@ const HomeListScreen = ({ navigation, props }) => {
 
   const dispatch = useDispatch();
 
-  // const {houses} = useSelector((state) => state.house);
+  const {houses} = useSelector((state) => state.house);
 
-  // console.log(houses)
+  // console.log("start")
+  // console.log('data from Home list ---->', houses)
   // console.log("Done")
 
   useEffect(() => {
@@ -23,9 +24,30 @@ const HomeListScreen = ({ navigation, props }) => {
 
   return (
     <View style={styles.container}>
-      <Card 
-        navigation={navigation}
+      <FlatList 
+        data={houses}
+        keyExtractor={item=>item._id}
+        renderItem={({ item }) => (
+          <Card
+            navigation={navigation}
+            title={item.title}
+            address={item.address}
+            homeType={item.homeType}
+            description={item.description}
+            price={item.price}
+            image={item.image}
+            yearBuilt={item.yearBuilt}
+            id={item._id}
+          />
+        )}
+        // extraData={houses.address}
       />
+         {/* <Card 
+            navigation={navigation}
+            // title={item.title}
+
+          /> */}
+      
       <FloatingAction
         position="right"
         onPressMain={() =>{navigation.navigate('AddHome')}}

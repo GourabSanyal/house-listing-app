@@ -8,19 +8,20 @@ export default function(state = intialState, action){
     switch(action.type){
         // Check to see if the reducer cares about this action
         case FETCH_HOUSES:
+            // console.log(action.payload)
             return{
                 // If so, make a copy of `state`
                 ...state,
                 // and update the copy with the new value from payload
                 houses: action.payload
             }
-        //     case CREATE_HOUSES:
-        //         // console.log(action.payload)
-        //         // return{
-        //         //     ...state,
-        //         //     houses: houses.concat(action.payload)
-        //         // }
-    }
-    // otherwise return the existing state unchanged
-    return state;
-}
+            //     case CREATE_HOUSES:
+            //         // return{
+                //         //     ...state,
+                //         //     houses: houses.concat(action.payload)
+                //         // }
+            }
+            // otherwise return the existing state unchanged
+            return state;
+        }
+        

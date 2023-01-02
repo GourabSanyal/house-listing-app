@@ -24,7 +24,7 @@ function StackNavigator() {
             <Stack.Screen
                 name="HomeList"
                 component={HomeListScreen}
-                // options={{title: 'HomeHunt'}}
+                options={{title: 'Home Hunt'}}
             />
             <Stack.Screen
                 name="HomeDetails"

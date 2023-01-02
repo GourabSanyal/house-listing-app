@@ -10,9 +10,9 @@ const Card = (props) => {
     return(
         <TouchableOpacity
             onPress={() => {props.navigation.navigate('HomeDetails' ,
-            //  {
-            //   houseId : props.id
-            // }
+             {
+              houseId : props.id
+            }
             )}}
         >
             <View 
@@ -22,14 +22,12 @@ const Card = (props) => {
                   style={styles.titleContainer}
                 >
                     <Text style={styles.title}>
-                        {/* {props.title ? (props.title.length > 30 ? props.title.slice(0, 30) + '...' : props.title): true} */}
-                        Title
-                    </Text>
+                        {props.title ? (props.title.length > 30 ? props.title.slice(0, 30) + '...' : props.title): true}                    </Text>
                 </View>
                 <View style={styles.imageContainer}>
                     <ImageBackground 
-                      // source={{ uri: props.image }} 
-                      source={require('../assets/images/house.png')}
+                      source={{ uri: props.image }} 
+                      // source={require('../assets/images/house.png')}
                       style={styles.image}
                     >
                         <Text style={styles.price}>
