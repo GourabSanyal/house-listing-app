@@ -18,10 +18,14 @@ const formSchema = yup.object({
 
 const AddHomeScreen = ({navigation}) => {
 
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     return (
-        <KeyboardAvoidingView>
+        <KeyboardAvoidingView
+            // behavior='padding'
+            keyboardVerticalOffset={10}
+            style={{ flex: 1}}
+        >
         <ScrollView>
             <Formik
                 initialValues={{
@@ -38,12 +42,13 @@ const AddHomeScreen = ({navigation}) => {
                     // console.log(values)
                     dispatch(houseAction.createHome(values))
                         .then(() => {
-                        Alert.alert("Created Successfully", [{ text: 'OK'}])
+                        Alert.alert(JSON.stringify("Created Successfully", [{ text: 'OK'}]))
                         })
                         .catch(() => {
-                            Alert.alert("An error occured. Try again!", [{text: "OK"}])
+                            Alert.alert(JSON.stringify("An error occured. Try again!", [{text: "OK"}]))
                         })
-                }}
+                }
+            }
             >
                 {(props)=>{
                     return(
@@ -161,7 +166,7 @@ const styles = StyleSheet.create({
         marginTop: 20
     },
     error:{
-        color: '#FF0000'
+        color: '#DD5A64'
     }
 });
 
