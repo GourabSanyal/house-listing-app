@@ -39,7 +39,7 @@ export const createHome = ({ title, image, homeType, price, yearBuilt, address, 
         })
 
         const responseData = await response.json();
-        // console.log(responseData);
+        console.log(responseData);
 
         dispatch({
             type: CREATE_HOUSES,
