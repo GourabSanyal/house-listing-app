@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {StyleSheet, View, Text, ScrollView, TextInput, Button, KeyboardAvoidingView, Alert} from 'react-native';
+import {StyleSheet, View, Text, ScrollView, TextInput, Button, KeyboardAvoidingView, Alert, ActivityIndicator} from 'react-native';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
@@ -17,6 +17,18 @@ const formSchema = yup.object({
 })
 
 const AddHomeScreen = ({navigation}) => {
+
+
+    const [isLoading, setIsLoading] = useState(false)
+    
+    if (isLoading) {
+        return(
+            <View style={styles.centered}>
+                <ActivityIndicator size='large' />
+            </View>
+        )
+    }
+    
 
     const dispatch = useDispatch();
 
@@ -40,11 +52,14 @@ const AddHomeScreen = ({navigation}) => {
                 validationSchema={formSchema}
                 onSubmit={(values) => {
                     // console.log(values)
+                    setIsLoading(true)
                     dispatch(houseAction.createHome(values))
                         .then(() => {
-                        Alert.alert(JSON.stringify("Created Successfully", [{ text: 'OK'}]))
+                            setIsLoading(false)
+                            Alert.alert(JSON.stringify("Created Successfully", [{ text: 'OK'}]))
                         })
                         .catch(() => {
+                            setIsLoading(false)
                             Alert.alert(JSON.stringify("An error occured. Try again!", [{text: "OK"}]))
                         })
                 }
@@ -167,6 +182,11 @@ const styles = StyleSheet.create({
     },
     error:{
         color: '#DD5A64'
+    },
+    centered: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });
 

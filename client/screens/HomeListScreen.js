@@ -1,6 +1,6 @@
 // Dependencies and libraries
-import { StyleSheet, Text, View, FlatList } from 'react-native'
-import React, {useEffect} from 'react'
+import { StyleSheet, Text, View, FlatList, ActivityIndicator } from 'react-native'
+import React, {useState, useEffect} from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 
 //components
@@ -9,6 +9,8 @@ import { FloatingAction } from "react-native-floating-action";
 import * as houseAction from '../redux/actions/houseAction.js';
 
 const HomeListScreen = ({ navigation, props }) => {
+
+  const [isLoading, setIsLoading] = useState(false)
 
   const dispatch = useDispatch();
 
@@ -19,8 +21,29 @@ const HomeListScreen = ({ navigation, props }) => {
   // console.log("Done")
 
   useEffect(() => {
+    setIsLoading(true)
     dispatch(houseAction.fetchHouses())
+      .then(() => setIsLoading(false))
+      .catch(() => setIsLoading(false))
   }, [dispatch]);
+    
+    if (isLoading) {
+        return(
+            <View style={styles.centered}>
+                <ActivityIndicator size='large' />
+            </View>
+        )
+    }
+
+    if (houses.length === 0 && !isLoading) {
+      return(
+        <View>
+          <Text>
+            No home found. You could add one!
+          </Text>
+        </View>
+      )
+    }
 
   return (
     <View style={styles.container}>
@@ -91,5 +114,10 @@ const styles = StyleSheet.create({
   },
   floatingButton:{
     marginTop: '80px'
-  }
+  },
+  centered: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+}
 })
