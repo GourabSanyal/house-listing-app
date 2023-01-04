@@ -18,23 +18,29 @@ const validate = [
         .withMessage('Password must be at least six characters')
 ]
 
-router.post( '/register', validate,  async (req, res) => {
+router.post( '/register', validate,  async(req, res) => {
     
     const errors = validationResult(req);
 
     if(!errors.isEmpty()){
-        return res.status(422).json({ errors:  errors.array() })
+        return res.status(422).json({ errors:  errors.array() });
     }
+
+    const userExists = await User.findOne({ email: req.body.email });
+    if (userExists) return res.status(400).send('Email already exists');
+
+    const salt = await bcrypt.genSalt(10);
+    const hashPassword = await bcrypt.hash(req.body.password, salt);
     
     const user = new User({
         fullName: req.body.fullName,
         email: req.body.email,
-        password: req.body.password
+        password: hashPassword
     })
 
     try {
         const savedUser = await user.save();
-        res.send(savedUser);
+        res.send({ id: savedUser._id, fullName: savedUser.fullName, email: savedUser.email, password: savedUser.password });
     } catch (error) {
         res.status(400).send(error);
     }
