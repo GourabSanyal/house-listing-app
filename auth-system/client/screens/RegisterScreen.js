@@ -39,8 +39,10 @@ const RegisterScreen = (navData) => {
         validationSchema={formSchema}
         onSubmit={(values) => {
           dispatch(authAction.registerUser(values))
-            .then(() => {
-              navData.navigation.navigate("Home");
+            .then((result) => {
+              if (result.success) {
+                navData.navigation.navigate("Home");
+              } else Alert.alert("Registration failed. try again!");
             })
             .catch((err) => console.log(err));
           navData.navigation.navigate("Home");
