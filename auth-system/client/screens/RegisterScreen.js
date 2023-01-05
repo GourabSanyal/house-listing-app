@@ -12,6 +12,9 @@ import {
 import React from "react";
 import { Formik } from "formik";
 import * as yup from "yup";
+import { useDispatch } from "react-redux";
+
+import * as authAction from "../redux/actions/authAction";
 
 const formSchema = yup.object({
   fullName: yup.string().required(),
@@ -20,6 +23,8 @@ const formSchema = yup.object({
 });
 
 const RegisterScreen = (navData) => {
+  const dispatch = useDispatch();
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -33,7 +38,11 @@ const RegisterScreen = (navData) => {
         }}
         validationSchema={formSchema}
         onSubmit={(values) => {
-          console.log(values);
+          dispatch(authAction.registerUser(values))
+            .then(() => {
+              navData.navigation.navigate("Home");
+            })
+            .catch((err) => console.log(err));
           navData.navigation.navigate("Home");
         }}
       >
@@ -51,7 +60,7 @@ const RegisterScreen = (navData) => {
                 placeholder="Full Name"
                 placeholderTextColor="#fff"
                 onChangeText={props.handleChange("fullName")}
-                value={props.values.email}
+                value={props.values.fullName}
                 onBlur={props.handleBlur("fullName")}
               />
               <Text style={styles.error}>
