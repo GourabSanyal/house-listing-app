@@ -8,21 +8,22 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
-  Platform
+  Platform,
 } from "react-native";
 import { Formik } from "formik";
-import * as yup from 'yup';
+import * as yup from "yup";
 
 const formSchema = yup.object({
-    email: yup.string().email().required(),
-    password: yup.string().required().min(6)
-})
+  email: yup.string().email().required(),
+  password: yup.string().required().min(6),
+});
 
-const LoginScreen = navData => {
+const LoginScreen = (navData) => {
   return (
-    <KeyboardAvoidingView 
-        behavior={Platform.OS === "ios" ? "padding": "height"} 
-        style={{ flex: 1 }}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={{ flex: 1 }}
+    >
       <Formik
         initialValues={{
           email: "",
@@ -31,13 +32,16 @@ const LoginScreen = navData => {
         validationSchema={formSchema}
         onSubmit={(values) => {
           console.log(values);
-          navData.navigation.navigate('Home')
+          navData.navigation.navigate("Home");
         }}
       >
         {(props) => (
           <View style={styles.container}>
             <View style={styles.logo}>
-              <Image source={require('../assets/images/logo.png')} style={styles.image} />
+              <Image
+                source={require("../assets/images/logo.png")}
+                style={styles.image}
+              />
             </View>
             <View>
               <TextInput
@@ -47,9 +51,11 @@ const LoginScreen = navData => {
                 keyboardType="email-address"
                 onChangeText={props.handleChange("email")}
                 value={props.values.email}
-                onBlur={props.handleBlur('email')}
+                onBlur={props.handleBlur("email")}
               />
-              <Text style={styles.error}>{props.touched.email && props.errors.email}</Text>
+              <Text style={styles.error}>
+                {props.touched.email && props.errors.email}
+              </Text>
               <TextInput
                 style={styles.input}
                 placeholder="Password"
@@ -57,10 +63,12 @@ const LoginScreen = navData => {
                 secureTextEntry={true}
                 onChangeText={props.handleChange("password")}
                 value={props.values.password}
-                onBlur={props.handleBlur('password')}
+                onBlur={props.handleBlur("password")}
               />
-              <Text style={styles.error}>{props.touched.password && props.errors.password}</Text>
-              <TouchableOpacity 
+              <Text style={styles.error}>
+                {props.touched.password && props.errors.password}
+              </Text>
+              <TouchableOpacity
                 style={styles.button}
                 onPress={props.handleSubmit}
               >
@@ -69,7 +77,7 @@ const LoginScreen = navData => {
               <View style={styles.registerContainer}>
                 <Text style={styles.registerText}>Don't have account?</Text>
                 <TouchableOpacity
-                    onPress={() => navData.navigation.navigate('Register')}
+                  onPress={() => navData.navigation.navigate("Register")}
                 >
                   <Text style={styles.registerButton}>Register</Text>
                 </TouchableOpacity>
@@ -134,8 +142,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   error: {
-      color: 'red'
-  }
+    color: "red",
+  },
 });
 
 export default LoginScreen;
