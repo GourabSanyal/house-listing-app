@@ -5,10 +5,15 @@ const app = express();
 
 app.use(express.json());
 
-const authRoute = require('./route/auth');  
+const authRoute = require('./route/auth');
+const verifyToken = require('./route/varifyToken'); 
 
 app.get( '/', (req, res) => {
     res.send('Welcome to the auth system')
+})
+
+app.get('/api/users/profile', verifyToken, (req, res) => {
+    res.send('This is the user profile')
 })
 
 app.use( '/api/users', authRoute);
