@@ -14,6 +14,7 @@ import { Formik } from "formik";
 import * as yup from "yup";
 
 const formSchema = yup.object({
+  fullName: yup.string().required(),
   email: yup.string().email().required(),
   password: yup.string().required().min(6),
 });
@@ -53,6 +54,9 @@ const RegisterScreen = (navData) => {
                 value={props.values.email}
                 onBlur={props.handleBlur("fullName")}
               />
+              <Text style={styles.error}>
+                {props.touched.fullName && props.errors.fullName}
+              </Text>
               <TextInput
                 style={styles.input}
                 placeholder="Email"
