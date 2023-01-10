@@ -20,13 +20,15 @@ export const fetchHouses = () =>{
 
 export const createHome = ({ title, image, homeType, price, yearBuilt, address, description}) =>{
     
+    console.log('data from actions ----> ',title, image, homeType, price, yearBuilt, address, description );
+
     return async dispatch => {
         const response = (await fetch('https://house-app.onrender.com/api/houses'), {
             method: 'POST',
             headers:{
-                'Content-Type' : 'application/json'
+                "Content-Type" : "application/json"
             },
-            body: JSON.stringify({
+            data: JSON.stringify({
                 title,
                 image,
                 homeType,
@@ -34,12 +36,12 @@ export const createHome = ({ title, image, homeType, price, yearBuilt, address, 
                 yearBuilt,
                 address,
                 description
-
             })
-        })
+        });
 
         const responseData = await response.json();
-        console.log(responseData);
+        console.log('response data ---> ',responseData);
+
 
         dispatch({
             type: CREATE_HOUSES,

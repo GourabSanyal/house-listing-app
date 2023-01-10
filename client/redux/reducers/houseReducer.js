@@ -15,14 +15,13 @@ export default function(state = intialState, action){
                 // and update the copy with the new value from payload
                 houses: action.payload
             }
-                case CREATE_HOUSES:
-                    console.log('from house reducer-->', action.payload.data);
-                    // return{
-                    //         ...state,
-                    //         houses: houses.concat(action.payload.data)
-                    //     }
+        case CREATE_HOUSES:
+            console.log('from house reducer-->', action.payload.data);
+            return{
+                    ...state,
+                    houses: state.concat(action.payload.data)
+                }
             }
             // otherwise return the existing state unchanged
             return state;
         }
-        

@@ -1,6 +1,7 @@
 const express = require('express');
 
 const { body, validationResult, check } = require('express-validator');
+// const CorsOptions = require('cores');
 
 
 const House = require('../models/House');
