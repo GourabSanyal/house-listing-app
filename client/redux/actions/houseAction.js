@@ -26,17 +26,6 @@ export const createHome = ({
   address,
   description,
 }) => {
-  console.log(
-    "data from actions ----> ",
-    title,
-    image,
-    homeType,
-    price,
-    yearBuilt,
-    address,
-    description
-  );
-
   return async (dispatch) => {
     const response = await fetch("https://house-app.onrender.com/api/houses", {
       method: "POST",
