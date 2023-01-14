@@ -1,34 +1,35 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const CorsOptions = require('cors')
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const CorsOptions = require("cors");
 
-const houses = require('./routes/houses');
+const houses = require("./routes/houses");
 
 const app = express();
 app.use(cors());
 
 app.use(express.json());
 
-app.get('/', cors(), (req, res) => {
-    res.send('Welcome to the housse listing API');
+app.get("/", (req, res) => {
+  res.send("Welcome to the housse listing API");
 });
 
-app.use('/api/houses', houses);
+app.use("/api/houses", houses);
 
-require('dotenv').config();
+require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;
 
-mongoose.connect(`mongodb+srv://admin:admin@cluster0.0nzgdwi.mongodb.net/home-list-app?retryWrites=true&w=majority`)
-    .then(result => {
-            app.listen(PORT, ()=>
-                console.log(`Server is running on port ${PORT}`))
-    })
-    .catch(err => console.log(err))
+mongoose
+  .connect(
+    `mongodb+srv://admin:admin@cluster0.0nzgdwi.mongodb.net/house_app?retryWrites=true&w=majority`
+  )
+  .then((result) => {
+    app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+  })
+  .catch((err) => console.log(err));
 
 // app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
-
 
 // const homes = [
 //         {
@@ -45,11 +46,11 @@ mongoose.connect(`mongodb+srv://admin:admin@cluster0.0nzgdwi.mongodb.net/home-li
 
 // app.get('/', ( req, res ) => {
 //     res.send('Welcome to the House Listing API')
-// })      
+// })
 
 // // get all the homes
 // app.get('/api/listing', (req, res) => {
-    
+
 //     res.send(homes)
 // })
 
@@ -112,12 +113,3 @@ mongoose.connect(`mongodb+srv://admin:admin@cluster0.0nzgdwi.mongodb.net/home-li
 // })
 
 // app.use('/api/houses', houses);
-
-
-
-
-
-
-
-
-
