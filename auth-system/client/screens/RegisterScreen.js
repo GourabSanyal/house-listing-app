@@ -37,15 +37,16 @@ const RegisterScreen = (navData) => {
           password: "",
         }}
         validationSchema={formSchema}
-        onSubmit={(values) => {
-          dispatch(authAction.registerUser(values))
+        onSubmit={(authData) => {
+          console.log("values from screen -->", authData); // it is working
+          dispatch(authAction.registerUser(authData))
             .then((result) => {
-              if (result.success) {
+              if (result) {
                 navData.navigation.navigate("Home");
               } else Alert.alert("Registration failed. try again!");
             })
             .catch((err) => console.log(err));
-          navData.navigation.navigate("Home");
+          // navData.navigation.navigate("Home");
         }}
       >
         {(props) => (

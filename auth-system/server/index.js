@@ -22,14 +22,26 @@ require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;
 
-mongoose
-  .connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@home-list-auth.gkw3i5z.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
-  )
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
-  })
-  .catch((err) => console.log(err));
+// mongoose
+//   .connect(
+//     `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@home-list-auth.gkw3i5z.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`
+//   )
+//   .then(() => {
+//     app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
+//   })
+//   .catch((err) => console.log(err));
+
+mongoose.connect(
+  `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@home-list-auth.gkw3i5z.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`,
+  { useNewUrlParser: true, useUnifiedTopology: true },
+  (err) => {
+    if (err) {
+      console.log(err);
+    } else {
+      app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
+    }
+  }
+);
 
 mongoose.set("autoIndex", false);
 mongoose.set("strictQuery", true);
