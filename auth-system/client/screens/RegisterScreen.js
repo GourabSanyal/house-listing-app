@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Image,
   Platform,
+  Alert,
 } from "react-native";
 import React from "react";
 import { Formik } from "formik";
@@ -37,9 +38,9 @@ const RegisterScreen = (navData) => {
           password: "",
         }}
         validationSchema={formSchema}
-        onSubmit={(authData) => {
-          console.log("values from screen -->", authData); // it is working
-          dispatch(authAction.registerUser(authData))
+        onSubmit={(values) => {
+          console.log("values from screen -->", values); // it is working
+          dispatch(authAction.registerUser(values))
             .then((result) => {
               if (result) {
                 navData.navigation.navigate("Home");

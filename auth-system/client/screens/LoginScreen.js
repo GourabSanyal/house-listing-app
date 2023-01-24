@@ -37,7 +37,7 @@ const LoginScreen = (navData) => {
         }}
         validationSchema={formSchema}
         onSubmit={(values) => {
-          // console.log(values);
+          console.log(values);
           dispatch(authAction.loginUser(values))
             .then((result) => {
               console.log(result);
