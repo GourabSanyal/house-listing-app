@@ -1,7 +1,8 @@
 # House Listing App
 
 A real estate application where you can add, update and delete data regarding a property which includes certain types of data about the property eg Name, Price, Location etc.
-Built with authentication System where the user can login and log out, this feature is still under developement and not implemented in the main app.
+
+Built with authentication System using JWT tokens, where the user can login and log out, this feature is still under developement and not implemented in the main app.
 
 To run the app and get the feel of the UI and other functionalities, you can checkout the guidelines below for more clarity.
 
